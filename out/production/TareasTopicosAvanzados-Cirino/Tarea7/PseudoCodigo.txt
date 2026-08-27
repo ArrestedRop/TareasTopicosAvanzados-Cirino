@@ -1,0 +1,12 @@
+TEcnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 7: 
+Fecha: 27 de agosto del 2026
+
+
+1.- META()
+Programa que utiliza las prestaciones graficas provenientes de javax.swing
+para generar una ventana cacpaz
