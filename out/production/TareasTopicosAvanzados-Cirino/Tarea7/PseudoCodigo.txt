@@ -7,6 +7,57 @@ Ejercicio 7:
 Fecha: 27 de agosto del 2026
 
 
-1.- META()
+1.- META
 Programa que utiliza las prestaciones graficas provenientes de javax.swing
-para generar una ventana cacpaz
+para generar una ventana junto a una coleccion de artefactos interactivos simples.
+
+2.-DATOS
+No Aplica
+
+3.-PROCESOS
+
+4.-SALIDA
+    panel = create Panel();
+    jbtOK = create Button("Ok");
+    jbtCancel = create Button("Cancel");
+    jiblName = create Label("Enter your name");
+    jtfName = create TextField("Type Name Here");
+    jchkBold = create CheckBox("Bold");
+    jchkItalic = create CheckBox("Italic");
+    jrbRed = create RadioButton("Red");
+    jrbYellow = create RadioButton("Yellow");
+    jcboColor = create ComboBox("Freshman", "Sophomore",
+                                "Junior", "Senior")
+
+
+4.1 addComponents() {
+    panel.add(jbtOK);
+    panel.add(jbtCanel);
+    panel.add(jiblName);
+    panel.add(jtfName);
+    panel.add(jchkBold);
+    panel.add(jchkItalic);
+    panel.add(jrbRed);
+    panel.add(jrbYellow);
+    panel.add(jcboColor);
+}
+
+4.2 show() {
+    frame = create frame();
+
+    frame.add(panel);
+    frame.setTitle("Show GUI Components");
+    frame.setSizeX(450);
+    frame.setSizeY(100);
+    frame.setLocationX(200);
+    frame.setLocationY(100);
+    frame.setVisible(true);
+}
+
+5.-NAVEGACION
+    main(){
+    gc = create GUIComponents();
+
+    gc.addComponents();
+    gc.show();
+    }
