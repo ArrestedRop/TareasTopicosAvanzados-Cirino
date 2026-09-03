@@ -1,3 +1,12 @@
+/* Greeting2.java
+TEcnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: __________________________
+Ejercicio 2:
+Fecha: 18 de agosto de 2022
+*/
 package Tarea5;
 import javafx.application.Application;
 import javafx.geometry.Pos;
