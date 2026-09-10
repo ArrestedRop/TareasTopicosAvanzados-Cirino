@@ -1,1 +1,108 @@
-Nigger
+
+Tecnologico Nacional de Mexico**
+Instituto Tecnologico de Leon**
+Ingenieria en Sistemas Computacionales**
+Topicos Avanzados de programacion**
+Alumno:** Maximo Javier Villagomez Magaña
+Ejercicio 17:** Menu de Layouts Tkinter (Pack, Grid, Place)
+Fecha:** 7 de septiembre del 2026
+
+1.- META
+Programa que despliega un menú interactivo en consola para ejecutar y
+demostrar gráficamente el funcionamiento de los tres administradores
+de geometría de Tkinter(`pack`, `grid`, `place`),
+basándose en ejemplos prácticos de diseño de interfaces.
+
+2.- DATOS
+opcionSeleccionada (Entero)
+
+3.- PROCESOS
+
+4.- SALIDA
+3.1 desplegarMenu() {
+print("--- Administradores de Layout en Tkinter ---");
+print("1. Correr ejemplo de layout: Pack");
+print("2. Correr ejemplo de layout: Grid");
+print("3. Correr ejemplo de layout: Place");
+print("4. Salir");
+print("Seleccione una opcion: ");
+opcionSeleccionada = readInput();
+return opcionSeleccionada;
+}
+
+4.1 runPackExample() {
+framePack = create Frame("Demostracion Pack");
+
+lblRed = create Label("Red Label", bg="red");
+lblGreen = create Label("Green Label", bg="green");
+lblBlue = create Label("Blue Label", bg="blue");
+
+lblRed.pack(fill="x");
+lblGreen.pack(fill="x");
+lblBlue.pack(fill="x");
+
+framePack.setSizeX(300);
+framePack.setSizeY(200);
+framePack.setVisible(true);
+}
+
+4.2 runGridExample() {
+frameGrid = create Frame("Demostracion Grid");
+
+lblUsername = create Label("Username");
+lblPassword = create Label("Password");
+txtUsername = create TextField();
+txtPassword = create TextField();
+
+lblUsername.grid(row=0, column=0);
+txtUsername.grid(row=0, column=1);
+lblPassword.grid(row=1, column=0);
+txtPassword.grid(row=1, column=1);
+
+frameGrid.setSizeX(300);
+frameGrid.setSizeY(150);
+frameGrid.setVisible(true);
+}
+
+4.3 runPlaceExample() {
+framePlace = create Frame("Demostracion Place");
+
+```
+lblTitle = create Label("Posicionamiento Absoluto");
+btnAccion = create Button("Click Aqui");
+
+lblTitle.place(x=20, y=30);
+btnAccion.place(x=50, y=80);
+
+framePlace.setSizeX(300);
+framePlace.setSizeY(200);
+framePlace.setVisible(true);
+}
+
+5.- NAVEGACION
+main() {
+layoutApp = create LayoutManager();
+opcionSeleccionada = 0;
+
+while (opcionSeleccionada != 4) {
+    opcionSeleccionada = layoutApp.desplegarMenu();
+
+    switch (opcionSeleccionada) {
+        case 1:
+            layoutApp.runPackExample();
+            break;
+        case 2:
+            layoutApp.runGridExample();
+            break;
+        case 3:
+            layoutApp.runPlaceExample();
+            break;
+        case 4:
+            print("Cerrando el programa...");
+            break;
+        default:
+            print("Opcion no valida, intente de nuevo.");
+            break;
+    }
+}
+}
