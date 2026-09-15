@@ -1,3 +1,13 @@
+/* ZipDirectoryExample.java
+TEcnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 23:
+Fecha: 4 de Septiembre 2026
+*/
+
 package Tarea23;
 import java.io.FileInputStream;
 import java.io.File;
@@ -13,7 +23,7 @@ public class ZipDirectoryExample {
 
     public static void main(String[] args) {
         String dir = "C:/Users/villa/OneDrive/Documentos/GitHub/TareasTopicosAvanzados-Cirino";
-        String zipFile = "C:/Users/villa/OneDrive/Documentos/Pureba";
+        String zipFile = "C:/Users/villa/OneDrive/Documentos/Pureba.zip";
 
         ZipDirectoryExample zip = new ZipDirectoryExample();
         zip.compressDirectory(dir, zipFile);
