@@ -1,0 +1,94 @@
+/* SwingControlDemo.java
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Tarea 1
+Fecha: 22 de septiembre del 2026
+*/
+
+1.- META
+Programa que busca poner a pureba botones, headers, frames y paneles de control
+usando las prestaciones de la biblioteca perteneciente a java
+de nombre javax.swing
+
+2.-DATOS
+    Frame mainFrame;
+    Label headerLabel;
+    Label statusLabel;
+    Panel controlPanel;
+
+3.-PROCESOS
+
+4.-SALIDA
+    4.1 prepareGUI() {
+         mainFrame = create frame("java Swing Examples")
+         set mainFrame size to (400,400);
+         set mainFrame in layout (create GridLayout(3, 1));
+
+         ON_EVENT (Close_Window on mainFrame) DO:
+         Terminate_Program()
+
+         headerLabel = create Label("", JLabel.CENTER);
+         statusLabel = create Label("",JLabel.CENTER);
+         set statusLabel size to (350,100);
+         controlPanel = create Panel();
+         controlPanel.setLayout(create FlowLayout());
+         add headerLabel to mainFrame;
+         add controlPanel to mainFrame;
+         add statusLabel to mainFrame;
+         set mainFrame visibility to true;
+    }
+
+    4.2 showDialogDemo() {
+         headerLabel.setText("Control in action: JOptionPane");
+         okButton = create Button("OK");
+         javaButton = create Button("Yes/No");
+         cancelButton = create Button("Yes/No/Cancel");
+
+         ON_EVENT (Click on okButton) DO:
+            Show_message("Welcome to TutorialsPoint.com");
+
+         ON_EVENT (Clicked on javaButton) DO {
+            int out;
+
+            show_message("Click any button");
+            out = receive();
+            SWITCH (out):
+               CASE YES_OPTION:
+                   set statusLabel text to "Yes selected."
+               CASE NO_OPTION:
+                   set statusLabel text to "No selected."
+            END SWITCH
+            }
+
+         ON_EVENT (Click on cancelButton) DO {
+             int out;
+
+             show_message("Click any button");
+             out = receive();
+             SWITCH (out):
+                 CASE YES_OPTION:
+                     set statusLabel text to "Yes selected."
+                 CASE NO_OPTION:
+                     set statusLabel text to "No selected."
+                 CASE CANCEL_OPTION:
+                     set statusLabel text to "Cancel"
+             END SWITCH
+
+             add okButton to controlPanel;
+             add javaButton to controlPanel;
+                add cancelButton to controlPanel;
+             set mainFrame visibility to true;
+         }
+    }
+
+5.-NAVEGACION
+    5.1 SwingControlDemo(){ prepareGUI(); }
+
+    5.2 main() {
+        demo = create SwingCOntrolDemo();
+        demo.goal()
+        demo.showDialogDemo();
+    }

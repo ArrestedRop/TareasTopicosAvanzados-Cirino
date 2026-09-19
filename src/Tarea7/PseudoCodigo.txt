@@ -3,7 +3,7 @@ Instituto Tecnologico de Leon
 ingenieria en Sistemas Computacionales
 Topicos Avanzados de programacion
 Alumno: Maximo Javier Villagomez Magaña
-Ejercicio 7: 
+Ejercicio 7:
 Fecha: 27 de agosto del 2026
 
 
