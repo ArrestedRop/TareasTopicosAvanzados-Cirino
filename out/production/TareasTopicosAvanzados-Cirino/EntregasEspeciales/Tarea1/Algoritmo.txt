@@ -11,7 +11,7 @@ Fecha: 22 de septiembre del 2026
 1.- META
 Programa que busca poner a pureba botones, headers, frames y paneles de control
 usando las prestaciones de la biblioteca perteneciente a java
-de nombre javax.swing
+de nombre javax.swing.
 
 2.-DATOS
     Frame mainFrame;
@@ -30,8 +30,8 @@ de nombre javax.swing
          ON_EVENT (Close_Window on mainFrame) DO:
          Terminate_Program()
 
-         headerLabel = create Label("", JLabel.CENTER);
-         statusLabel = create Label("",JLabel.CENTER);
+         headerLabel = create Label("", Label.CENTER);
+         statusLabel = create Label("",Label.CENTER);
          set statusLabel size to (350,100);
          controlPanel = create Panel();
          controlPanel.setLayout(create FlowLayout());
@@ -79,7 +79,7 @@ de nombre javax.swing
 
              add okButton to controlPanel;
              add javaButton to controlPanel;
-                add cancelButton to controlPanel;
+             add cancelButton to controlPanel;
              set mainFrame visibility to true;
          }
     }

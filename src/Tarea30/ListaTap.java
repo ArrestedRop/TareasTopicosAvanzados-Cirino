@@ -5,8 +5,8 @@ package Tarea30;
  Tópicos avanzados de programación
  Martes y jueves 7:00-8:45
  viernes 7:00-7:50
- Alumno(a): _____________
- Ejercicio #: 33-bis
+ Alumno(a): Maximo Javier Villagomez Magaña
+ Ejercicio #: 30
  Fecha: 25 sep 2025
  
  Algoritmo:

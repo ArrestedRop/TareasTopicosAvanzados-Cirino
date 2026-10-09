@@ -4,9 +4,9 @@ TEcnologico Nacional de Mexico
 Instituto Tecnologico de Leon
 ingenieria en Sistemas Computacionales
 Topicos Avanzados de programacion
-Alumno: __________________________
-Ejercicio 2: 
-Fecha: 18 de agosto de 2022
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 3:
+Fecha: 25 de agosto de 2026
 
 Algoritmo:
 

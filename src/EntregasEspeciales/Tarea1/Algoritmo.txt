@@ -11,7 +11,7 @@ Fecha: 22 de septiembre del 2026
 1.- META
 Programa que busca poner a pureba botones, headers, frames y paneles de control
 usando las prestaciones de la biblioteca perteneciente a java
-de nombre javax.swing
+de nombre javax.swing.
 
 2.-DATOS
     Frame mainFrame;
@@ -30,8 +30,8 @@ de nombre javax.swing
          ON_EVENT (Close_Window on mainFrame) DO:
          Terminate_Program()
 
-         headerLabel = create Label("", JLabel.CENTER);
-         statusLabel = create Label("",JLabel.CENTER);
+         headerLabel = create Label("", Label.CENTER);
+         statusLabel = create Label("",Label.CENTER);
          set statusLabel size to (350,100);
          controlPanel = create Panel();
          controlPanel.setLayout(create FlowLayout());
@@ -79,13 +79,36 @@ de nombre javax.swing
 
              add okButton to controlPanel;
              add javaButton to controlPanel;
-                add cancelButton to controlPanel;
+             add cancelButton to controlPanel;
              set mainFrame visibility to true;
          }
     }
+    4.3
+    4.4 onCancelButtonPressed() {
+                String message;
+                int out = JOptionPane.showConfirmDialog(mainFrame,
+                        "Click any button",
+                        "TutorialsPoint.com",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                message = textPerOption(out);
+                statusLabel.setText(message);
+    }
+    4.5 String textperOption(int option) {
+        return switch (option) {
+            case 0 -> "Yes selected.";
+            case 1 -> "No selected.";
+            case 3 -> "Cancel";
+            default -> "";
+    }
 
 5.-NAVEGACION
-    5.1 SwingControlDemo(){ prepareGUI(); }
+    5.1 onOkButtonPressed() {
+        show_Dialog("Welcome to TutorialsPoint.com")
+    }
+
+    5.2 SwingControlDemo(){ prepareGUI(); }
 
     5.2 main() {
         demo = create SwingCOntrolDemo();

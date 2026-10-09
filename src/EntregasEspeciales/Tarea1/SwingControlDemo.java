@@ -14,19 +14,31 @@ import javax.swing.*;
 import static javax.swing.JOptionPane.*;
 
 public class SwingControlDemo {
+    private JFrame mainFrame;
+    private JLabel headerLabel;
+    private JLabel statusLabel;
+    private JPanel controlPanel;
+
     //1.- META
     private void goal() {
         String meta = "Programa que busca poner a prueba botones," +
                 " headers, frames y paneles de control usando" +
                 " las prestaciones de la biblioteca perteneciente" +
-                " a java de nombre Swing.";
+                " a java de nombre javax.Swing.";
+
         System.out.println(meta);
     }
+
     //2.-DATOS
-    private JFrame mainFrame;
-    private JLabel headerLabel;
-    private JLabel statusLabel;
-    private JPanel controlPanel;
+
+    //3.-PROCESOS
+    private void onJavaButtonEventPerformed() {
+        onJavaButtonPressed();
+    }
+    private void onCancelButtonEventPerformed() {
+        onCancelButtonPressed();
+    }
+
     //4.-SALIDA
     private void prepareGUI(){
         mainFrame = new JFrame("Java Swing Examples");
@@ -53,35 +65,55 @@ public class SwingControlDemo {
         JButton javaButton = new JButton("Yes/No");
         JButton cancelButton = new JButton("Yes/No/Cancel");
 
-        // Uso de Lambdas para reducir espacio y llamadas estaticas
-        okButton.addActionListener(e -> JOptionPane.showMessageDialog(
-                mainFrame, "Welcome to TutorialsPoint.com"));
-        javaButton.addActionListener(e -> {
-            int out = JOptionPane.showConfirmDialog(mainFrame,
-                    "Click any button", "TutorialsPoint.com",
-                    JOptionPane.YES_NO_OPTION);
-            switch(out) {
-                case YES_OPTION -> statusLabel.setText("Yes selected.");
-                case NO_OPTION -> statusLabel.setText("No selected.");
-            }
-        });
-        cancelButton.addActionListener(e -> {
-            int out = JOptionPane.showConfirmDialog(mainFrame,
-                    "Click any button", "TutorialsPoint.com",
-                    JOptionPane.YES_NO_CANCEL_OPTION,
-                    JOptionPane.INFORMATION_MESSAGE);
-            switch (out) {
-                case YES_OPTION -> statusLabel.setText("Yes selected.");
-                case NO_OPTION -> statusLabel.setText("No selected.");
-                case CANCEL_OPTION -> statusLabel.setText("Cancel");
-            }
-        });
+        okButton.addActionListener(e -> onOkButtonPressed());
+        javaButton.addActionListener(e -> onJavaButtonEventPerformed());
+        cancelButton.addActionListener(e -> onCancelButtonEventPerformed());
+
         controlPanel.add(okButton);
         controlPanel.add(javaButton);
         controlPanel.add(cancelButton);
         mainFrame.setVisible(true);
     }
+
+    private void onJavaButtonPressed() {
+        String message;
+        int out = JOptionPane.showConfirmDialog(mainFrame,
+                "Click any button",
+                "TutorialsPoint.com",
+                JOptionPane.YES_NO_OPTION);
+
+        message = textPerOption(out);
+        statusLabel.setText(message);
+
+    }
+    private void onCancelButtonPressed() {
+        String message;
+        int out = JOptionPane.showConfirmDialog(mainFrame,
+                "Click any button",
+                "TutorialsPoint.com",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+
+        message = textPerOption(out);
+        statusLabel.setText(message);
+    }
+
+    private String textPerOption(int option) {
+        return switch (option) {
+            case 0 -> "Yes selected.";
+            case 1 -> "No selected.";
+            case 3 -> "Cancel";
+            default -> "";
+        };
+
+    }
     //5.-NAVEGACION
+    private void onOkButtonPressed() {
+        JOptionPane.showMessageDialog(
+                mainFrame,
+                "Welcome to TutorialsPoint.com");
+    }
+
     public SwingControlDemo(){ prepareGUI(); }
 
     public static void main(String[] args){

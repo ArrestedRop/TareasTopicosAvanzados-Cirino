@@ -1,4 +1,14 @@
 package Tarea32;
+/* ListExample.java
+TEcnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 32:
+Fecha: 4 de septiembre de 2026
+ */
+
 import java.util.*;
 
 public class ListExample {
