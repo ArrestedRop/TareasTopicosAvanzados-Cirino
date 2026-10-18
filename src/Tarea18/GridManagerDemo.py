@@ -1,5 +1,5 @@
 """ GridManagerDemo.py
-TEcnologico Nacional de Mexico
+Tecnologico Nacional de Mexico
 Instituto Tecnologico de Leon
 ingenieria en Sistemas Computacionales
 Topicos Avanzados de programacion
@@ -16,13 +16,16 @@ class GridManagerDemo:
 
     message = Message(window, text =
     "This Message widget occupies three rows and two columns")
-    message.grid(row = 1, column = 1, , columnspan = 2)
+    # Se eliminó la coma doble y se agregó rowspan=3 para que ocupe las 3 filas que menciona el texto
+    message.grid(row = 1, column = 1, rowspan = 3, columnspan = 2)
+
     Label(window, text = "First Name:").grid(row = 1, column = 3)
-    Entry(window).grid(row = 1, column = 4, , pady = 5)
+    Entry(window).grid(row = 1, column = 4, pady = 5)
+
     Label(window, text = "Last Name:").grid(row = 2, column = 3)
     Entry(window).grid(row = 2, column = 4)
-    Button(window, text = "Get Name").grid(row = 3,
-    padx = 5, pady = 5, column = 4, )
+
+    Button(window, text = "Get Name").grid(row = 3, padx = 5, pady = 5, column = 4)
 
     window.mainloop() # Create an event loop
 

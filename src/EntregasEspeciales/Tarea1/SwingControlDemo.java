@@ -8,6 +8,7 @@ Tarea 1
 Fecha: 22 de septiembre del 2026
 */
 package EntregasEspeciales.Tarea1;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -25,18 +26,20 @@ public class SwingControlDemo {
                 " headers, frames y paneles de control usando" +
                 " las prestaciones de la biblioteca perteneciente" +
                 " a java de nombre javax.Swing.";
-
         System.out.println(meta);
     }
 
     //2.-DATOS
 
     //3.-PROCESOS
-    private void onJavaButtonEventPerformed() {
-        onJavaButtonPressed();
-    }
-    private void onCancelButtonEventPerformed() {
-        onCancelButtonPressed();
+    // Movemos textPerOption aquí ya que es un proceso lógico de conversión
+    private String textPerOption(int option) {
+        return switch (option) {
+            case 0 -> "Yes selected.";
+            case 1 -> "No selected.";
+            case 3 -> "Cancel";
+            default -> "";
+        };
     }
 
     //4.-SALIDA
@@ -48,11 +51,14 @@ public class SwingControlDemo {
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e){ System.exit(0); }
         });
+
         headerLabel = new JLabel("", JLabel.CENTER);
         statusLabel = new JLabel("",JLabel.CENTER);
         statusLabel.setSize(350,100);
+
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
+
         mainFrame.add(headerLabel);
         mainFrame.add(controlPanel);
         mainFrame.add(statusLabel);
@@ -65,9 +71,10 @@ public class SwingControlDemo {
         JButton javaButton = new JButton("Yes/No");
         JButton cancelButton = new JButton("Yes/No/Cancel");
 
-        okButton.addActionListener(e -> onOkButtonPressed());
-        javaButton.addActionListener(e -> onJavaButtonEventPerformed());
-        cancelButton.addActionListener(e -> onCancelButtonEventPerformed());
+        // Conectamos los botones directamente a sus clases Listener
+        okButton.addActionListener(new OkButtonHandler());
+        javaButton.addActionListener(new JavaButtonHandler());
+        cancelButton.addActionListener(new CancelButtonHandler());
 
         controlPanel.add(okButton);
         controlPanel.add(javaButton);
@@ -75,47 +82,50 @@ public class SwingControlDemo {
         mainFrame.setVisible(true);
     }
 
-    private void onJavaButtonPressed() {
-        String message;
-        int out = JOptionPane.showConfirmDialog(mainFrame,
-                "Click any button",
-                "TutorialsPoint.com",
-                JOptionPane.YES_NO_OPTION);
-
-        message = textPerOption(out);
-        statusLabel.setText(message);
-
-    }
-    private void onCancelButtonPressed() {
-        String message;
-        int out = JOptionPane.showConfirmDialog(mainFrame,
-                "Click any button",
-                "TutorialsPoint.com",
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.INFORMATION_MESSAGE);
-
-        message = textPerOption(out);
-        statusLabel.setText(message);
-    }
-
-    private String textPerOption(int option) {
-        return switch (option) {
-            case 0 -> "Yes selected.";
-            case 1 -> "No selected.";
-            case 3 -> "Cancel";
-            default -> "";
-        };
-
-    }
     //5.-NAVEGACION
-    private void onOkButtonPressed() {
-        JOptionPane.showMessageDialog(
-                mainFrame,
-                "Welcome to TutorialsPoint.com");
+    // Aquí definimos las clases internas que manejan los eventos
+    private class OkButtonHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(
+                    mainFrame,
+                    "Welcome to TutorialsPoint.com");
+        }
     }
 
-    public SwingControlDemo(){ prepareGUI(); }
+    private class JavaButtonHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int out = JOptionPane.showConfirmDialog(mainFrame,
+                    "Click any button",
+                    "TutorialsPoint.com",
+                    JOptionPane.YES_NO_OPTION);
 
+            String message = textPerOption(out);
+            statusLabel.setText(message);
+        }
+    }
+
+    private class CancelButtonHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int out = JOptionPane.showConfirmDialog(mainFrame,
+                    "Click any button",
+                    "TutorialsPoint.com",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            String message = textPerOption(out);
+            statusLabel.setText(message);
+        }
+    }
+
+    // Constructor
+    public SwingControlDemo(){
+        prepareGUI();
+    }
+
+    // Main
     public static void main(String[] args){
         SwingControlDemo demo = new SwingControlDemo();
         demo.goal();

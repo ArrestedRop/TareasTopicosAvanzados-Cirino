@@ -1,4 +1,15 @@
 package Tarea28;
+/* Planet.java
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 28:
+Fecha: 4 de Septiembre 2026
+*/
+
+//param 75
 public enum Planet {
     MERCURY (3.303e+23, 2.4397e6),
     VENUS   (4.869e+24, 6.0518e6),

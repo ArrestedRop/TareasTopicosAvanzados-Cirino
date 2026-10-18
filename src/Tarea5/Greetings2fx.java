@@ -1,10 +1,10 @@
 /* Greeting2.java
-TEcnologico Nacional de Mexico
+T3cnologico Nacional de Mexico
 Instituto Tecnologico de Leon
 ingenieria en Sistemas Computacionales
 Topicos Avanzados de programacion
-Alumno: __________________________
-Ejercicio 2:
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 5:
 Fecha: 18 de agosto de 2022
 */
 package Tarea5;

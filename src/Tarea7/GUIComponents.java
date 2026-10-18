@@ -1,8 +1,12 @@
 package Tarea7;
-/*GUIComponents.java
-Tomado de Liang:
-por Cirino Silva Tovar
-el: 5 de Julio 2015
+/* GUIComponents.java
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 7:
+Fecha: 25 de agosto de 2022
 */
 
 import javax.swing.*;

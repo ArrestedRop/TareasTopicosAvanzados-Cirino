@@ -1,4 +1,13 @@
 package Tarea24;
+/* UnzipFiles.java
+TEcnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 24:
+Fecha: 4 de Septiembre 2026
+*/
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -27,7 +27,7 @@ activadores para entrada en el algoritmo:
 """                                       
            
 
-from tkinter import * # Import tkinter
+from tkinter import *
     
 class GUIComponents:
     def marco1(self, frame1):

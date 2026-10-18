@@ -1,3 +1,11 @@
+# Greeting2Py.py
+# Tecnologico Nacional de Mexico
+# Instituto Tecnologico de Leon
+# Ingenieria en Sistemas Computacionales
+# Topicos Avanzados de programacion
+# Alumno: Maximo Javier Villagomez Magaña
+# Ejercicio 4:
+# Fecha: 25 de agosto de 2026
 
 import tkinter as tk
 
