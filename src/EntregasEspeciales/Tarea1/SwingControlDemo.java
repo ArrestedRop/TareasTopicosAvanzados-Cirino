@@ -22,17 +22,16 @@ public class SwingControlDemo {
 
     //1.- META
     private void goal() {
-        String meta = "Programa que busca poner a prueba botones," +
-                " headers, frames y paneles de control usando" +
-                " las prestaciones de la biblioteca perteneciente" +
-                " a java de nombre javax.Swing.";
+        String meta = "Demostración práctica de interfaces gráficas " +
+                "con Java Swing. El programa ilustra el manejo de " +
+                "eventos de usuario (ActionListeners), el principio " +
+                " y la invocación de diálogos modales (JOptionPane)" +
+                " con retroalimentación visual.";
         System.out.println(meta);
     }
 
     //2.-DATOS
-
     //3.-PROCESOS
-    // Movemos textPerOption aquí ya que es un proceso lógico de conversión
     private String textPerOption(int option) {
         return switch (option) {
             case 0 -> "Yes selected.";
@@ -82,48 +81,48 @@ public class SwingControlDemo {
         mainFrame.setVisible(true);
     }
 
+    // METODO DRY PARA MENSAJES DE SALIDA
+    private void executeDialog(String jopTitle, String jopMessage,
+                               int optionType, int messageType) {
+
+        int out = JOptionPane.showConfirmDialog(mainFrame,jopMessage,jopTitle,
+                optionType,messageType);
+
+        statusLabel.setText(textPerOption(out));
+    }
+
+    // MENSAJES DE SALIDA
+    private void OkButtonMessage() {
+        JOptionPane.showMessageDialog(mainFrame, "Welcome to TutorialsPoint.com");
+    }
+
+    private void JavaButtonMessage() {
+        executeDialog("Click any button", "TutorialsPoint.com",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+    }
+
+    private void CancelButtonMessage() {
+        executeDialog("Click any button", "TutorialsPoint.com",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }
+
     //5.-NAVEGACION
-    // Aquí definimos las clases internas que manejan los eventos
     private class OkButtonHandler implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(
-                    mainFrame,
-                    "Welcome to TutorialsPoint.com");
-        }
+        public void actionPerformed(ActionEvent e) {OkButtonMessage();}
     }
 
     private class JavaButtonHandler implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            int out = JOptionPane.showConfirmDialog(mainFrame,
-                    "Click any button",
-                    "TutorialsPoint.com",
-                    JOptionPane.YES_NO_OPTION);
-
-            String message = textPerOption(out);
-            statusLabel.setText(message);
-        }
+        public void actionPerformed(ActionEvent e) {JavaButtonMessage();}
     }
 
     private class CancelButtonHandler implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            int out = JOptionPane.showConfirmDialog(mainFrame,
-                    "Click any button",
-                    "TutorialsPoint.com",
-                    JOptionPane.YES_NO_CANCEL_OPTION,
-                    JOptionPane.INFORMATION_MESSAGE);
-
-            String message = textPerOption(out);
-            statusLabel.setText(message);
-        }
+        public void actionPerformed(ActionEvent e) {CancelButtonMessage();}
     }
 
-    // Constructor
-    public SwingControlDemo(){
-        prepareGUI();
-    }
+    public SwingControlDemo(){prepareGUI();}
 
     // Main
     public static void main(String[] args){

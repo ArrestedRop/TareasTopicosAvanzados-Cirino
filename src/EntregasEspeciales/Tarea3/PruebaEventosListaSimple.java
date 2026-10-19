@@ -1,40 +1,17 @@
 package EntregasEspeciales.Tarea3;
-
+/* PruebaEventosListaSimple.java
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Tarea 3
+Fecha: 20 de octubre del 2026
+*/
 import java.awt.*;
 import java.awt.event.*;
 
-class EventosListaSimple {
-    Frame v;
-    List lista;
-    ManejaEventosListaSimple oyeLista;
 
-    class ManejaEventosListaSimple implements ItemListener {
-        public void itemStateChanged(ItemEvent e) {
-            Object fuente = e.getSource();
-
-            if (fuente == lista) {
-                System.out.println(lista.getSelectedItem());
-            }
-        }
-    }
-
-    void forma() {
-        v = new Frame();
-        v.setLayout(new FlowLayout());
-        lista = new List(4, false);
-        lista.add("lunes");
-        lista.add("martes");
-        lista.add("miercoles");
-        lista.add("jueves");
-        lista.add("viernes");
-        lista.add("sabado");
-        lista.add("domingo");
-        lista.addItemListener(oyeLista = new ManejaEventosListaSimple());
-        v.add(lista);
-        v.pack();
-        v.setVisible(true);
-    }
-}
 
 public class PruebaEventosListaSimple {
     public static void main(String args[]) {
