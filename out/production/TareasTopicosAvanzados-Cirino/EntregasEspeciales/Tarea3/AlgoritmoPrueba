@@ -1,0 +1,37 @@
+/* PruebaEventosListaSimple.java
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Tarea 3
+Fecha: 20 de octubre del 2026
+*/
+w
+1.- META
+    1.1 Goal() {
+        System.out.println("Programa simple que pretende poner a prueba el " +
+                           "manejo de eventos producidos por un componente " +
+                           "de la clase list");
+    }
+
+2.- DATOS
+    EventosListaSimple obj;
+
+3.- PROCESOS
+    (NO SE MANEJAN EN ESTE EJERCICIO)
+
+4.- SALIDAS
+    (SE MANEJAN EN LA CLASE EventosListaSimple Y SE DELEGA A LA NAVEGABILIDAD)
+
+5.- NAVEGACION
+    5.1 navegabilidad() {
+        obj = create EventosListaSimple();
+        obj.forma();
+    }
+
+    5.2 main() {
+        prueba = create PruebaEventosListaSimple();
+        prueba.Goal();
+        prueba.navegabilidad();
+    }

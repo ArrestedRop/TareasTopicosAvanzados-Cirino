@@ -1,0 +1,46 @@
+    Frame v;
+    List lista;
+    ManejaEventosListaSimple oyeLista;
+    OnClosedButtonEvent closedButtonEvent;
+
+    4.1 forma() {
+        v = create Frame();
+        set v layout to (create FlowLayout());
+
+        lista = create List(4, false);
+        add "lunes" to lista;
+        add "martes" to lista;
+        add "miercoles" to lista;
+        add "jueves" to lista;
+        add "viernes" to lista;
+        add "sabado" to lista;
+        add "domingo" to lista;
+
+        add ManejaEventosListaSimple to lista;
+        add OnClosedButtonEvent to v;
+
+        add lista to v;
+        pack v;
+        set v visibility to true;
+    }
+
+    4.2 listPrinting(String selectedItem) {
+        System.out.println(selectedItem);
+    }
+
+    4.3 exitMessageToPrint() {
+        System.out.println("Saliendo del programa...");
+    }
+
+    5.1 ManejaEventosListaSimple implements ItemListener {
+        ON_EVENT (itemStateChanged) DO:
+            IF (event source is lista) THEN
+                listPrinting(lista.getSelectedItem());
+            END IF
+    }
+
+    5.2 OnClosedButtonEvent extends WindowAdapter {
+        ON_EVENT (windowClosing) DO:
+            exitMessageToPrint();
+            Terminate_Program(0);
+    }

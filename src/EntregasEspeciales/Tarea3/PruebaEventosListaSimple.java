@@ -8,14 +8,29 @@ Alumno: Maximo Javier Villagomez Magaña
 Tarea 3
 Fecha: 20 de octubre del 2026
 */
-import java.awt.*;
-import java.awt.event.*;
-
-
-
 public class PruebaEventosListaSimple {
+    EventosListaSimple obj;
+    //1.- META
+    public void Goal() {
+        String meta = "Programa simple que pretende poner a prueba";
+
+        meta += " el manejo de eventos producidos por un componente ";
+        meta += " de la clase list";
+        System.out.println(meta);
+    }
+    //2.-DATOS - NO SE MANEJAN EN ESTE EJERCICIO
+    // 3.-PROCESOS - NO SE MANEJAN EN ESTE EJERCICIO
+    // 4.-SALIDAS - SE MANEJAN EN LA CLASE EventosListaSimple Y SE DELEGA A LA NAVEGABILIDAD
+    // 5.-NAVEGAVILIDAD
+    private void navegabilidad() {
+        obj = new EventosListaSimple();
+        obj.forma();
+    }
+
     public static void main(String args[]) {
-        EventosListaSimple pagina = new EventosListaSimple();
-        pagina.forma();
+        PruebaEventosListaSimple prueba = new PruebaEventosListaSimple();
+
+        prueba.Goal();
+        prueba.navegabilidad();
     }
 }
