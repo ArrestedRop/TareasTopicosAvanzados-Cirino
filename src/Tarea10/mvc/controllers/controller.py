@@ -6,13 +6,13 @@
 # Alumno: Maximo Javier Villagomez Magaña
 # Ejercicio 4:
 # Fecha: 25 de agosto de 2026
-
 # Source - https://stackoverflow.com/q/38042632
 # Posted by Kesto, modified by community. See post 'Timeline' for change history
 # Retrieved 2026-09-01, License - CC BY-SA 3.0
 
 from models.model import Person
 from views import view
+#python -m controllers.controller
 
 def showAll():
     #gets list of all Person objects

@@ -1,0 +1,44 @@
+/* UnzipFiles
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 25
+Fecha: 4 de Septiembre de 2026
+*/
+
+1.- META
+    1.1 meta()
+        IMPRIMIR "Programa que extrae el contenido de un archivo .zip a un"
+        IMPRIMIR "directorio destino, mostrando en consola la ruta de cada archivo."
+
+2.- DATOS
+    CADENA zip_file_path = "C:/Users/villa/OneDrive/Documentos/Pureba.zip"
+    CADENA dest_dir = "C:/Users/villa/OneDrive/Documentos/Pureba"
+
+3.- PROCESOS
+    3.1 unzip(CADENA zip_file_path, CADENA dest_dir)
+        IF (NOT exists dest_dir) DO:
+            CALL os.makedirs(dest_dir)
+        END IF
+
+        OPEN zip_file_path IN READ_MODE AS zis
+
+        // 4.- SALIDAS integradas en el ciclo
+        FOR EACH file_name IN zis.namelist() DO:
+            set new_file_path to (CALL os.path.join(dest_dir, file_name))
+            set new_file_path to (CALL os.path.normpath(new_file_path))
+            IMPRIMIR "Unzipping to " + new_file_path
+        END FOR
+
+        CALL zis.extractall(dest_dir)
+        CLOSE zis
+
+4.- SALIDAS
+    (SE MANEJAN DENTRO DEL MÉTODO unzip Y SE DELEGAN A LA NAVEGACIÓN)
+
+5.- NAVEGACION
+    5.1 main()
+        CALL meta()
+        CALL unzip(zip_file_path, dest_dir)

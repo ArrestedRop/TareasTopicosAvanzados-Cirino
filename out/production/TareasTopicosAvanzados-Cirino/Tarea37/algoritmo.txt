@@ -1,0 +1,116 @@
+1.- META
+    1.1 meta()
+        IMPRIMIR "Demostración práctica de un CRUD en Python modo texto."
+        IMPRIMIR "El programa ilustra el manejo de archivos binarios utilizando"
+        IMPRIMIR "la librería pickle y modularidad separando cada operación."
+
+2.- DATOS
+    CADENA ARCHIVO = "datos.dat"
+
+3.- PROCESOS
+    3.1 cargar_datos()
+        IF (exists ARCHIVO) DO:
+            OPEN ARCHIVO IN READ_BINARY_MODE
+            set datos to (LOAD FROM ARCHIVO)
+            CLOSE ARCHIVO
+            RETORNAR datos
+        ELSE:
+            RETORNAR {}
+        END IF
+
+    3.2 guardar_datos(DICCIONARIO datos)
+        OPEN ARCHIVO IN WRITE_BINARY_MODE
+        DUMP datos INTO ARCHIVO
+        CLOSE ARCHIVO
+
+4.- SALIDAS
+    4.1 create()
+        set datos to CALL cargar_datos()
+        IMPRIMIR "Ingrese ID (unico) del registro: "
+        LEER id_reg
+
+        IF (id_reg IN datos) DO:
+            IMPRIMIR "Error: El ID ya existe."
+            RETORNAR
+        END IF
+
+        IMPRIMIR "Ingrese Nombre: "
+        LEER nombre
+        set datos[id_reg] to nombre
+        CALL guardar_datos(datos)
+        IMPRIMIR "-> Registro creado exitosamente."
+
+    4.2 read()
+        set datos to CALL cargar_datos()
+        IMPRIMIR "\n--- LISTA DE REGISTROS ---"
+
+        IF (datos IS EMPTY) DO:
+            IMPRIMIR "No hay registros en el archivo binario."
+            RETORNAR
+        END IF
+
+        FOR EACH (id_reg, nombre) IN datos DO:
+            IMPRIMIR "ID: " + id_reg + " | Nombre: " + nombre
+        END FOR
+
+    4.3 update()
+        set datos to CALL cargar_datos()
+        IMPRIMIR "Ingrese el ID del registro a actualizar: "
+        LEER id_reg
+
+        IF (id_reg NOT IN datos) DO:
+            IMPRIMIR "Error: El ID no existe."
+            RETORNAR
+        END IF
+
+        IMPRIMIR "Ingrese el nuevo Nombre: "
+        LEER nuevo_nombre
+        set datos[id_reg] to nuevo_nombre
+        CALL guardar_datos(datos)
+        IMPRIMIR "-> Registro actualizado exitosamente."
+
+    4.4 delete()
+        set datos to CALL cargar_datos()
+        IMPRIMIR "Ingrese el ID del registro a eliminar: "
+        LEER id_reg
+
+        IF (id_reg IN datos) DO:
+            DELETE datos[id_reg]
+            CALL guardar_datos(datos)
+            IMPRIMIR "-> Registro eliminado exitosamente."
+        ELSE:
+            IMPRIMIR "Error: El ID no existe."
+        END IF
+
+5.- NAVEGACION
+    5.1 menu()
+        WHILE (TRUE) DO:
+            IMPRIMIR "=== MENÚ CRUD BINARIO ==="
+            IMPRIMIR "1. Crear (Create)"
+            IMPRIMIR "2. Leer (Read)"
+            IMPRIMIR "3. Actualizar (Update)"
+            IMPRIMIR "4. Eliminar (Delete)"
+            IMPRIMIR "5. Salir"
+
+            LEER opcion
+
+            SWITCH (opcion):
+                CASE "1":
+                    CALL create()
+                CASE "2":
+                    CALL read()
+                CASE "3":
+                    CALL update()
+                CASE "4":
+                    CALL delete()
+                CASE "5":
+                    IMPRIMIR "Saliendo del programa..."
+                    BREAK
+                DEFAULT:
+                    IMPRIMIR "Opción inválida. Intente de nuevo."
+            END SWITCH
+        END WHILE
+
+    5.2 main()
+        CALL meta()
+        CALL menu()

@@ -60,4 +60,4 @@ No Aplica
 
     gc.addComponents();
     gc.show();
-    }
+}

@@ -1,0 +1,44 @@
+/* ZipDirectoryExample
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 25
+Fecha: 4 de Septiembre de 2026
+*/
+
+1.- META
+    1.1 meta()
+        IMPRIMIR "Programa que comprime un directorio completo y sus subdirectorios"
+        IMPRIMIR "en un archivo .zip, utilizando el algoritmo ZIP_DEFLATED."
+
+2.- DATOS
+    CADENA dir_path = "C:/Users/villa/OneDrive/Documentos/GitHub/TareasTopicosAvanzados-Cirino"
+    CADENA zip_file = "C:/Users/villa/OneDrive/Documentos/Pureba.zip"
+
+3.- PROCESOS
+    3.1 compress_directory(CADENA directory, CADENA zip_file_path)
+        OPEN zip_file_path IN WRITE_MODE WITH ZIP_DEFLATED AS zos
+
+        FOR EACH (root, dirs, files) IN (CALL os.walk(directory)) DO:
+            FOR EACH file IN files DO:
+                set file_path to (CALL os.path.join(root, file))
+
+                // 4.- SALIDAS integradas
+                IMPRIMIR "Compressing: " + file_path
+
+                set zip_entry_name to (CALL os.path.relpath(file_path, directory))
+                CALL zos.write(file_path, zip_entry_name)
+            END FOR
+        END FOR
+
+        CLOSE zos
+
+4.- SALIDAS
+    (SE MANEJAN DENTRO DEL MÉTODO compress_directory Y SE DELEGAN A LA NAVEGACIÓN)
+
+5.- NAVEGACION
+    5.1 main()
+        CALL meta()
+        CALL compress_directory(dir_path, zip_file)
