@@ -13,97 +13,131 @@ Fecha: 22 de septiembre del 2026
     ilustra el manejo de eventos de usuario (ActionListeners) y la invocación
     de diálogos modales (JOptionPane) con retroalimentación visual.
 
-2.- DATOS
     OBJETO JFrame mainFrame
     OBJETO JLabel headerLabel
     OBJETO JLabel statusLabel
     OBJETO JPanel controlPanel
 
+2.- DATOS
+    // No hay datos globales declarados para esta sección
+
 3.- PROCESOS
     3.1 textPerOption(ENTERO option)
-        SWITCH (option):
-            CASE 0:
-                RETORNAR "Yes selected."
-            CASE 1:
-                RETORNAR "No selected."
-            CASE 3:
-                RETORNAR "Cancel"
-            DEFAULT:
-                RETORNAR ""
-        END SWITCH
+        INICIO
+            SWITCH (option):
+                CASE 0:
+                    RETORNAR "Yes selected."
+                CASE 1:
+                    RETORNAR "No selected."
+                CASE 3:
+                    RETORNAR "Cancel"
+                DEFAULT:
+                    RETORNAR ""
+            END SWITCH
+        FIN
 
 4.- SALIDAS
     4.1 prepareGUI()
-        mainFrame = create JFrame("Java Swing Examples")
-        set mainFrame.size to (400, 400)
-        set mainFrame.layout to (create GridLayout(3, 1))
+        INICIO
+            mainFrame = create JFrame("Java Swing Examples")
+            set mainFrame.size to (400, 400)
+            set mainFrame.layout to (create GridLayout(3, 1))
 
-        ON_EVENT (windowClosing ON mainFrame) DO:
-            Terminate_Program(0)
-        END EVENT
+            ON_EVENT (windowClosing ON mainFrame) DO:
+                INICIO
+                    Terminate_Program(0)
+                FIN
+            END EVENT
 
-        headerLabel = create JLabel("", JLabel.CENTER)
-        statusLabel = create JLabel("", JLabel.CENTER)
-        set statusLabel.size to (350, 100)
+            headerLabel = create JLabel("", JLabel.CENTER)
+            statusLabel = create JLabel("", JLabel.CENTER)
+            set statusLabel.size to (350, 100)
 
-        controlPanel = create JPanel()
-        set controlPanel.layout to (create FlowLayout())
+            controlPanel = create JPanel()
+            set controlPanel.layout to (create FlowLayout())
 
-        add headerLabel to mainFrame
-        add controlPanel to mainFrame
-        add statusLabel to mainFrame
-        set mainFrame.visibility to TRUE
+            add headerLabel to mainFrame
+            add controlPanel to mainFrame
+            add statusLabel to mainFrame
+            set mainFrame.visibility to TRUE
+        FIN
 
     4.2 showDialogDemo()
-        set headerLabel.text to "Control in action: JOptionPane"
+        INICIO
+            set headerLabel.text to "Control in action: JOptionPane"
 
-        okButton = create JButton("OK")
-        javaButton = create JButton("Yes/No")
-        cancelButton = create JButton("Yes/No/Cancel")
+            okButton = create JButton("OK")
+            javaButton = create JButton("Yes/No")
+            cancelButton = create JButton("Yes/No/Cancel")
 
-        add OkButtonHandler to okButton
-        add JavaButtonHandler to javaButton
-        add CancelButtonHandler to cancelButton
+            add OkButtonHandler to okButton
+            add JavaButtonHandler to javaButton
+            add CancelButtonHandler to cancelButton
 
-        add okButton to controlPanel
-        add javaButton to controlPanel
-        add cancelButton to controlPanel
+            add okButton to controlPanel
+            add javaButton to controlPanel
+            add cancelButton to controlPanel
 
-        set mainFrame.visibility to TRUE
+            set mainFrame.visibility to TRUE
+        FIN
 
     4.3 executeDialog(CADENA jopTitle, CADENA jopMessage, ENTERO optionType, ENTERO messageType)
-        ENTERO out
-        out = showConfirmDialog(mainFrame, jopMessage, jopTitle, optionType, messageType)
-        set statusLabel.text to (CALL textPerOption(out))
+        INICIO
+            ENTERO out
+            out = showConfirmDialog(mainFrame, jopMessage, jopTitle, optionType, messageType)
+            set statusLabel.text to (CALL textPerOption(out))
+        FIN
 
     4.4 OkButtonMessage()
-        CALL showMessageDialog(mainFrame, "Welcome to TutorialsPoint.com")
+        INICIO
+            CALL showMessageDialog(mainFrame, "Welcome to TutorialsPoint.com")
+        FIN
 
     4.5 JavaButtonMessage()
-        CALL executeDialog("Click any button", "TutorialsPoint.com", YES_NO_OPTION, QUESTION_MESSAGE)
+        INICIO
+            CALL executeDialog("Click any button", "TutorialsPoint.com", YES_NO_OPTION, QUESTION_MESSAGE)
+        FIN
 
     4.6 CancelButtonMessage()
-        CALL executeDialog("Click any button", "TutorialsPoint.com", YES_NO_CANCEL_OPTION, INFORMATION_MESSAGE)
+        INICIO
+            CALL executeDialog("Click any button", "TutorialsPoint.com", YES_NO_CANCEL_OPTION, INFORMATION_MESSAGE)
+        FIN
 
 5.- NAVEGACION
     5.1 OkButtonHandler (IMPLEMENTA ActionListener)
-        ON_EVENT (actionPerformed) DO:
-            CALL OkButtonMessage()
-        END EVENT
+        INICIO
+            ON_EVENT (actionPerformed) DO:
+                INICIO
+                    CALL OkButtonMessage()
+                FIN
+            END EVENT
+        FIN
 
     5.2 JavaButtonHandler (IMPLEMENTA ActionListener)
-        ON_EVENT (actionPerformed) DO:
-            CALL JavaButtonMessage()
-        END EVENT
+        INICIO
+            ON_EVENT (actionPerformed) DO:
+                INICIO
+                    CALL JavaButtonMessage()
+                FIN
+            END EVENT
+        FIN
 
     5.3 CancelButtonHandler (IMPLEMENTA ActionListener)
-        ON_EVENT (actionPerformed) DO:
-            CALL CancelButtonMessage()
-        END EVENT
+        INICIO
+            ON_EVENT (actionPerformed) DO:
+                INICIO
+                    CALL CancelButtonMessage()
+                FIN
+            END EVENT
+        FIN
 
     5.4 CONSTRUCTOR SwingControlDemo()
-        CALL prepareGUI()
+        INICIO
+            CALL prepareGUI()
+        FIN
 
     5.5 main()
-        demo = create SwingControlDemo()
-        CALL demo.showDialogDemo()
+        INICIO
+            demo = create SwingControlDemo()
+            CALL demo.showDialogDemo()
+        FIN
