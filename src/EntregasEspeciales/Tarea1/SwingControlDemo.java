@@ -27,6 +27,7 @@ public class SwingControlDemo {
                 "eventos de usuario (ActionListeners), el principio " +
                 " y la invocación de diálogos modales (JOptionPane)" +
                 " con retroalimentación visual.";
+
         System.out.println(meta);
     }
 

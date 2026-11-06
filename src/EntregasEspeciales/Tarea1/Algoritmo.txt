@@ -84,6 +84,7 @@ Fecha: 22 de septiembre del 2026
     4.3 executeDialog(CADENA jopTitle, CADENA jopMessage, ENTERO optionType, ENTERO messageType)
         INICIO
             ENTERO out
+
             out = showConfirmDialog(mainFrame, jopMessage, jopTitle, optionType, messageType)
             set statusLabel.text to (CALL textPerOption(out))
         FIN
