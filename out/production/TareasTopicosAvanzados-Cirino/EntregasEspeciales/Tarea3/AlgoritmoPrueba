@@ -7,31 +7,27 @@ Alumno: Maximo Javier Villagomez Magaña
 Tarea 3
 Fecha: 20 de octubre del 2026
 */
-w
+
 1.- META
-    1.1 Goal() {
-        System.out.println("Programa simple que pretende poner a prueba el " +
-                           "manejo de eventos producidos por un componente " +
-                           "de la clase list");
-    }
+      Programa simple que pretende poner a prueba el
+      manejo de eventos producidos por un componente
+      de la clase list
 
 2.- DATOS
-    EventosListaSimple obj;
+    // (NO SE MANEJAN EN ESTE EJERCICIO)
 
 3.- PROCESOS
-    (NO SE MANEJAN EN ESTE EJERCICIO)
+    // (NO SE MANEJAN EN ESTE EJERCICIO)
 
 4.- SALIDAS
-    (SE MANEJAN EN LA CLASE EventosListaSimple Y SE DELEGA A LA NAVEGABILIDAD)
+    // (SE MANEJAN EN LA CLASE EventosListaSimple Y SE DELEGA A LA NAVEGABILIDAD)
 
 5.- NAVEGACION
-    5.1 navegabilidad() {
-        obj = create EventosListaSimple();
-        obj.forma();
-    }
+    5.1 main()
+        INICIO
+            prueba = create PruebaEventosListaSimple()
+            obj = create EventosListaSimple()
 
-    5.2 main() {
-        prueba = create PruebaEventosListaSimple();
-        prueba.Goal();
-        prueba.navegabilidad();
-    }
+            CALL prueba.Goal()
+            CALL obj.forma()
+        FIN

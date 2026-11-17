@@ -1,0 +1,83 @@
+/*
+Tecnologico Nacional de Mexico
+Instituto Tecnologico de Leon
+Ingenieria en Sistemas Computacionales
+Topicos Avanzados de programacion
+Alumno: Maximo Javier Villagomez Magaña
+Ejercicio 51
+Fecha: 11 de noviembre del 2026
+*/
+
+1.- META
+    Algoritmo con enfoque de sistemas que propone el despliegue de un Frame
+    con un fondo coloreado (RGB), y 3 componentes ScrollBar.
+    Cada uno al deslizarse deberá disminuir o aumentar la saturación
+    de color R o G o B, cambiando el fondo del Frame y desplegando
+    una etiqueta con los valores correspondientes a la posición de
+    cada ScrollBar conforme al color desplegado en el fondo del frame.
+
+    VARIABLES GLOBALES
+    OBJETO JFrame mainFrame
+    OBJETO JScrollBar redScrollBar, greenScrollBar, blueScrollBar
+    OBJETO JLabel valueText
+    OBJETO Jpanel colorPanel
+
+2.- DATOS //En este ejercicio no existe ninguna clase de dato que se utilice
+    procesos concretos
+
+3.- PROCESOS
+    3.1 adjustmentValueChanged
+        EMPEZAR
+            int r,g,b
+            r = GET int VALUE of redScrollBar
+            g = GET int VALUE of greenScrollBar
+            b = GET int VALUE of blueScrollBar
+
+            SET colorPanel BACKGROUND color to (new Color(r,g,b))
+            SET valueText to ("R: " + r +  " G: " + g + " B: " + b)
+        TERMINAR
+
+4.- SALIDAS
+    4.1 prepareGUI
+        EMPEZAR
+            SET mainFrame size to (450, 350)
+            set mainFrame LAYOUT to NEW BorderLayout
+
+            CREATE panel on colorPanel
+            // Assuming we work with RGB
+            SET colorPanel BACKGROUND to (new Color(128,128,128))
+            ADD colorPanel to the CENTER of BorderLayout
+
+            OBJETO Jpanel controlPanel NEW Jpanel(NEW GridLayout(4,2,10,10))
+            SET controlPanel BORDER to CREATE NEW BORDER(10,10,10,10)
+
+            CREATE redScrollBar with HORIZONTAL position and DIMENSIONS
+                    (128,1,0,256)
+            CREATE greenScrollBar with HORIZONTAL position and DIMENSIONS
+                    (128,1,0,256)
+            CREATE blueScrollBar with HORIZONTAL position and DIMENSIONS
+                    (128,1,0,256)
+
+            ADD AdjustmentListener to redScrollBar;
+            ADD AdjustmentListener to greenScrollBar;
+            ADD AdjustmentListener to blueScrollBar;
+
+            CREATE valueText with VALUE ("R: 128 G; 128 b: 128")
+
+            ADD NEW JLABEL("Rojo (R)") to controlPanel
+            ADD redScrollBar to controlPanel
+            ADD NEW JLABEL("Verde (G)") to controlPanel
+            ADD greenScrollBar to controlPanel
+            ADD NEW JLABEL("Azul (B)") to controlPanel
+            ADD blueScrollBar to controlPanel
+            ADD NEW JLABEL("Saturacion actual:") to controlPanel
+            ADD controlPanel to FRAME
+        TERMINAR
+
+5.- NAVEGACION
+    5.1 main()
+        EMPEZAR
+            CREATE OBJECT prepareGUI ventana
+            CALL setLocationRelativeTo(null) in ventana //Para centrar la pantalla
+            CALL setVisible(true) in ventana
+        TERMINAR

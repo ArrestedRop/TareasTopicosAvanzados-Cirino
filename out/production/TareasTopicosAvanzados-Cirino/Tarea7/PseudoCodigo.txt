@@ -6,7 +6,6 @@ Alumno: Maximo Javier Villagomez Magaña
 Ejercicio 7:
 Fecha: 27 de agosto del 2026
 
-
 1.- META
 Programa que utiliza las prestaciones graficas provenientes de javax.swing
 para generar una ventana junto a una coleccion de artefactos interactivos simples.
